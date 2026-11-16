@@ -1,3 +1,5 @@
+<p align="center"><img src="images/logo.png" width="120" alt="Logo"></p>
+
 # Samsung Heat Pump AI Control – integrácia do Home Assistanta
 
 [![English](https://img.shields.io/badge/lang-English-blue.svg)](README.md) [![Slovenčina](https://img.shields.io/badge/jazyk-Sloven%C4%8Dina-green.svg)](README.sk.md)
