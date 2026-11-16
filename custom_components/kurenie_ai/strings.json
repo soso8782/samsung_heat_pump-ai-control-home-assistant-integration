@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Connect Kúrenie AI",
-        "description": "Enter the address of the Kúrenie AI web app and the integration key created in the app (Settings, Home Assistant integration).",
+        "description": "Enter the address of the Kúrenie AI web app and the integration key created in the app (Settings, Home Assistant integration). Like the project? Support it on [PayPal](https://www.paypal.com/paypalme/sonics007) or [Ko-fi](https://ko-fi.com/soso8782).",
         "data": {
           "url": "App address",
           "api_key": "Integration key"
