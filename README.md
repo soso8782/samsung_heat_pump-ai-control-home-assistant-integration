@@ -1,84 +1,77 @@
-# Kúrenie AI – integrácia do Home Assistanta
+# Kúrenie AI – Home Assistant integration
+
+[![English](https://img.shields.io/badge/lang-English-blue.svg)](README.md) [![Slovenčina](https://img.shields.io/badge/jazyk-Sloven%C4%8Dina-green.svg)](README.sk.md)
 
 [![HACS Custom](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz/docs/faq/custom_repositories)
-[![Verzia](https://img.shields.io/github/v/tag/soso8782/samsung_heat_pump-ai-control-home-assistant-integration?label=verzia&sort=semver)](https://github.com/soso8782/samsung_heat_pump-ai-control-home-assistant-integration/tags)
+[![Version](https://img.shields.io/github/v/tag/soso8782/samsung_heat_pump-ai-control-home-assistant-integration?label=version&sort=semver)](https://github.com/soso8782/samsung_heat_pump-ai-control-home-assistant-integration/tags)
 
-Vlastná integrácia (custom component) pre Home Assistant, ktorá pripojí HA na web aplikáciu
-**[Kúrenie AI](https://github.com/soso8782/kurenie_ai_samsung_heat_pump)** – AI agenta pre tepelné čerpadlá Samsung EHS
-(Mono aj Split, riadené cez ESPHome a zbernicu NASA). V Home Asistante vytvorí jedno zariadenie s entitami na sledovanie
-izieb, vody, kompresora, TÚV a agenta a umožní meniť režim agenta a cieľovú izbovú teplotu.
+A custom component for Home Assistant that connects HA to the
+**[Kúrenie AI](https://github.com/soso8782/samsung_heat_pump-ai-control)** web app – an AI agent for Samsung EHS heat pumps
+(Mono and Split, controlled through ESPHome and the NASA bus). In Home Assistant it creates one device with entities for
+monitoring rooms, water, the compressor, DHW and the agent, and lets you change the agent mode and the target room temperature.
 
-*English summary below.*
+The integration is translated into Slovak and English. The app itself (web UI, notifications and the AI agent) is also available
+in Slovak and English: the web UI is switched with the SK/EN switch, and the language of the agent and notifications is set with
+`UI_LANG` or in the app under Settings → "Language of notifications and the agent".
 
-## Požiadavky
+*Slovak documentation: [README.sk.md](README.sk.md).*
 
-- bežiaca aplikácia **Kúrenie AI verzie 2.3.0 alebo novšej** (rozhranie `/api/ha/v1`),
-- Home Assistant 2024.11 alebo novší,
-- sieťové spojenie z Home Assistanta na aplikáciu (dáta sa čítajú lokálne, `local_polling`, predvolene každých 30 s).
+## Requirements
 
-## Inštalácia
+- a running **Kúrenie AI app, version 2.3.0 or newer** (the `/api/ha/v1` interface),
+- Home Assistant 2024.11 or newer,
+- a network connection from Home Assistant to the app (data is read locally, `local_polling`, every 30 s by default).
 
-**Cez HACS (vlastný repozitár):**
-1. HACS → menu ⋮ vpravo hore → **Vlastné repozitáre**.
-2. Repozitár: `https://github.com/soso8782/samsung_heat_pump-ai-control-home-assistant-integration`, kategória **Integrácia**.
-3. Nainštaluj **Kúrenie AI** a reštartuj Home Assistant.
+## Installation
 
-**Ručne:** skopíruj priečinok `custom_components/kurenie_ai` do `config/custom_components/` a reštartuj Home Assistant.
+**Via HACS (custom repository):**
+1. HACS → menu ⋮ at the top right → **Custom repositories**.
+2. Repository: `https://github.com/soso8782/samsung_heat_pump-ai-control-home-assistant-integration`, category **Integration**.
+3. Install **Kúrenie AI** and restart Home Assistant.
 
-## Nastavenie
+**Manually:** copy the `custom_components/kurenie_ai` folder to `config/custom_components/` and restart Home Assistant.
 
-1. V aplikácii Kúrenie AI otvor **Nastavenia → Integrácia do Home Assistanta** a daj **Vytvoriť kľúč**.
-   Kľúč sa zobrazí iba raz (na serveri je uložený len jeho odtlačok SHA-256). Nový kľúč nahradí starý, **Zrušiť kľúč** integráciu odpojí.
-2. V Home Assistante: **Nastavenia → Zariadenia a služby → Pridať integráciu → Kúrenie AI**.
-3. Zadaj adresu aplikácie (napr. `http://192.168.1.50`) a kľúč.
-4. Interval obnovy (15 – 300 s) zmeníš cez **Konfigurovať** pri integrácii.
-   Keď kľúč zrušíš alebo vymeníš, Home Assistant ponúkne opätovné prihlásenie.
+## Setup
 
-## Entity
+1. In the Kúrenie AI app open **Settings → Home Assistant integration** and click **Create key**.
+   The key is shown only once (only its SHA-256 fingerprint is stored on the server). A new key replaces the old one, **Revoke key** disconnects the integration.
+2. In Home Assistant: **Settings → Devices & services → Add integration → Kúrenie AI**.
+3. Enter the app address (e.g. `http://192.168.1.50`) and the key.
+4. You can change the refresh interval (15 – 300 s) with **Configure** on the integration.
+   When you revoke or replace the key, Home Assistant offers to re-authenticate.
 
-Zariadenie „Kúrenie AI – <model tepelného čerpadla>“ (výrobca Samsung).
+## Entities
 
-| Typ | Entity |
+Device "Kúrenie AI – <heat pump model>" (manufacturer Samsung).
+
+| Type | Entities |
 |---|---|
-| sensor | vonkajšia teplota; teplota každej izby (atribúty `min_target`, `reference`); výstupná teplota vody, spiatočka, cieľ podľa krivky, Delta T; frekvencia kompresora; posun krivky; teplota TÚV (ak je TÚV); chybový kód; stav agenta (ok / pozor / problém); posledné hodnotenie agenta (celý text v atribúte `summary`); poplachy (počet, zoznam v atribúte `alerts`) |
-| binary_sensor | kompresor beží; odmrazovanie; ohrev TÚV (ak je TÚV); problém (poplach alebo chybový kód ≠ 0); pripojenie ESP, zberača a Home Assistanta |
-| select | režim agenta (vypnutý / radí / riadi) |
-| number | cieľová izbová teplota (krok 0,5 °C, rozsah podľa aplikácie) |
-| button | spustiť agenta teraz; spustiť ohrev TÚV (ak je TÚV) |
+| sensor | outdoor temperature; temperature of each room (attributes `min_target`, `reference`); flow temperature, return temperature, target flow temperature from the heating curve, Delta T; compressor frequency; curve offset; DHW temperature (if there is DHW); error code; agent status (ok / pozor / problém); last agent assessment (full text in the `summary` attribute); alerts (count, list in the `alerts` attribute) |
+| binary_sensor | compressor running; defrost; DHW heating (if there is DHW); problem (alert or error code ≠ 0); connection of the ESP, the collector and Home Assistant |
+| select | agent mode (off / advise only / control) |
+| number | target room temperature (step 0.5 °C, range given by the app) |
+| button | run the agent now; start DHW heating (if there is DHW) |
 
-Po každej akcii sa dáta obnovia hneď. Ak aplikácia akciu odmietne (napr. ohrev TÚV teraz nejde), Home Assistant zobrazí jej správu.
+After each action the data is refreshed immediately. If the app rejects an action (e.g. DHW heating cannot be started now), Home Assistant shows its message.
 
-Spotrebu a COP pre panel Energia integrácia neprináša – tie posiela aplikácia cez MQTT (`ha_pub.py`).
+The integration does not provide consumption and COP for the Energy dashboard – the app publishes those via MQTT (`ha_pub.py`).
 
-## Riešenie problémov
+## Troubleshooting
 
-- **Nepodarilo sa pripojiť:** skontroluj adresu (http alebo https) a či aplikácia beží.
-- **Kľúč je neplatný:** vytvor v aplikácii nový kľúč a zadaj ho znova.
-- **Podrobné záznamy:**
+- **Failed to connect:** check the address (http or https) and that the app is running.
+- **Key is invalid:** create a new key in the app and enter it again.
+- **Detailed logs:**
   ```yaml
   logger:
     logs:
       custom_components.kurenie_ai: debug
   ```
 
-## Testy
+## Tests
 
 ```bash
 python -X utf8 -m unittest discover -s tests -v
 ```
 
-Testy bežia bez Home Assistanta (čistá logika, syntax, JSON, preklady). Test zhody ciest so serverom sa spustí,
-ak premenná `KURENIE_APP` ukazuje na priečinok aplikácie Kúrenie AI.
-
----
-
-## English
-
-Custom Home Assistant integration for **[Kúrenie AI](https://github.com/soso8782/kurenie_ai_samsung_heat_pump)**, an AI agent
-for Samsung EHS heat pumps. It creates one device with sensors (rooms, outdoor, water temperatures, Delta T, compressor,
-curve shift, hot water, error code, agent status and alerts), binary sensors, an agent-mode select, a room-target number and
-buttons (run agent now, hot-water boost). Translations: Slovak and English.
-
-**Install:** HACS → Custom repositories → this repository URL, category *Integration* → install **Kúrenie AI** → restart HA.
-**Configure:** in the app open *Settings → Home Assistant integration*, create a key (shown once), then in HA add the
-**Kúrenie AI** integration with the app address and the key. Requires app version 2.3.0 or newer.
+The tests run without Home Assistant (pure logic, syntax, JSON, translations). The test that checks the paths against the server
+runs if the `KURENIE_APP` variable points to the Kúrenie AI app folder.
