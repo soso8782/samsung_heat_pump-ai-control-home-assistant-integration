@@ -11,7 +11,7 @@ Ak ti projekt šetrí peniaze alebo čas, môžeš ma podporiť kávou cez PayPa
 [![Verzia](https://img.shields.io/github/v/tag/soso8782/samsung_heat_pump-ai-control-home-assistant-integration?label=verzia&sort=semver)](https://github.com/soso8782/samsung_heat_pump-ai-control-home-assistant-integration/tags)
 
 Vlastná integrácia (custom component) pre Home Assistant, ktorá pripojí HA na web aplikáciu
-**[Kúrenie AI](https://github.com/soso8782/samsung_heat_pump-ai-control)** – AI agenta pre tepelné čerpadlá Samsung EHS
+**[Samsung Heat Pump AI Control](https://github.com/soso8782/samsung_heat_pump-ai-control)** – AI agenta pre tepelné čerpadlá Samsung EHS
 (Mono aj Split, riadené cez ESPHome a zbernicu NASA). V Home Asistante vytvorí jedno zariadenie s entitami na sledovanie
 izieb, vody, kompresora, TÚV a agenta a umožní meniť režim agenta a cieľovú izbovú teplotu.
 
@@ -23,7 +23,7 @@ v Nastaveniach → „Jazyk upozornení a agenta“.
 
 ## Požiadavky
 
-- bežiaca aplikácia **Kúrenie AI verzie 2.3.0 alebo novšej** (rozhranie `/api/ha/v1`),
+- bežiaca aplikácia **Samsung Heat Pump AI Control verzie 2.3.0 alebo novšej** (rozhranie `/api/ha/v1`),
 - Home Assistant 2024.11 alebo novší,
 - sieťové spojenie z Home Assistanta na aplikáciu (dáta sa čítajú lokálne, `local_polling`, predvolene každých 30 s).
 
@@ -36,14 +36,14 @@ v Nastaveniach → „Jazyk upozornení a agenta“.
 
 **Ručne:** skopíruj priečinok `custom_components/samsung_heat_pump_ai_control` do `config/custom_components/` a reštartuj Home Assistant.
 
-**Prechod z verzie 1.x (predtým „Kúrenie AI“, doména `kurenie_ai`):** verzia 2.0.0 používa novú doménu
+**Prechod z verzie 1.x (stará doména `kurenie_ai`):** verzia 2.0.0 používa novú doménu
 `samsung_heat_pump_ai_control`. V Home Assistante zmaž starú položku integrácie, odstráň starý priečinok
 `custom_components/kurenie_ai` (v HACS: Odstrániť), nainštaluj 2.0.0, reštartuj a integráciu pridaj znova.
 ID entít sa zmenia; uprav automatizácie a dashboardy, ktoré ich používajú.
 
 ## Nastavenie
 
-1. V aplikácii Kúrenie AI otvor **Nastavenia → Integrácia do Home Assistanta** a daj **Vytvoriť kľúč**.
+1. V aplikácii Samsung Heat Pump AI Control otvor **Nastavenia → Integrácia do Home Assistanta** a daj **Vytvoriť kľúč**.
    Kľúč sa zobrazí iba raz (na serveri je uložený len jeho odtlačok SHA-256). Nový kľúč nahradí starý, **Zrušiť kľúč** integráciu odpojí.
 2. V Home Assistante: **Nastavenia → Zariadenia a služby → Pridať integráciu → Samsung Heat Pump AI Control**.
 3. Zadaj adresu aplikácie (napr. `http://192.168.1.50`) a kľúč.
@@ -84,7 +84,7 @@ python -X utf8 -m unittest discover -s tests -v
 ```
 
 Testy bežia bez Home Assistanta (čistá logika, syntax, JSON, preklady). Test zhody ciest so serverom sa spustí,
-ak premenná `KURENIE_APP` ukazuje na priečinok aplikácie Kúrenie AI.
+ak premenná `KURENIE_APP` ukazuje na priečinok aplikácie Samsung Heat Pump AI Control.
 
 ---
 

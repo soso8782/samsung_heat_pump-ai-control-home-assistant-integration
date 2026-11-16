@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Testy integrácie Kúrenie AI bez Home Assistanta: čistá logika (model.py), syntax, JSON, preklady.
+"""Testy integrácie Samsung Heat Pump AI Control bez Home Assistanta: čistá logika (model.py), syntax, JSON, preklady.
 
 Spustenie z koreňa repozitára:  python -X utf8 -m unittest discover -s tests -v
 (test zhody ciest so serverom sa spustí, len ak KURENIE_APP ukazuje na priečinok aplikácie)
