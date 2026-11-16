@@ -1,0 +1,1 @@
+# samsung_heat_pump-ai-control-home-assistant-integration
