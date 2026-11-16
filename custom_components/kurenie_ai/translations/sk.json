@@ -1,0 +1,93 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Pripojenie Kúrenie AI",
+        "description": "Zadaj adresu webu aplikácie Kúrenie AI a kľúč integrácie vytvorený v aplikácii (Nastavenia, Integrácia Home Assistant).",
+        "data": {
+          "url": "Adresa aplikácie",
+          "api_key": "Kľúč integrácie"
+        },
+        "data_description": {
+          "url": "Napríklad http://192.168.1.50",
+          "api_key": "Kľúč sa pri vytvorení v aplikácii zobrazí iba raz."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Kľúč integrácie bol odmietnutý",
+        "description": "Kľúč pre {url} už neplatí. Vytvor v aplikácii nový kľúč a zadaj ho sem.",
+        "data": {
+          "api_key": "Kľúč integrácie"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nepodarilo sa pripojiť k aplikácii. Skontroluj adresu a či aplikácia beží.",
+      "invalid_auth": "Kľúč integrácie je neplatný alebo bol zrušený.",
+      "invalid_url": "Neplatná adresa."
+    },
+    "abort": {
+      "already_configured": "Táto aplikácia je už nastavená.",
+      "reauth_successful": "Opätovné prihlásenie bolo úspešné."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Voľby Kúrenie AI",
+        "data": {
+          "scan_interval": "Interval obnovy (sekundy)"
+        },
+        "data_description": {
+          "scan_interval": "Od 15 do 300 sekúnd."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "outdoor_temperature": {"name": "Vonkajšia teplota"},
+      "room_temperature": {"name": "Teplota – {room}"},
+      "water_out": {"name": "Výstupná teplota vody"},
+      "water_return": {"name": "Spiatočka vody"},
+      "water_target": {"name": "Cieľová teplota vody podľa krivky"},
+      "water_delta_t": {"name": "Delta T vody"},
+      "compressor_frequency": {"name": "Frekvencia kompresora"},
+      "curve_offset": {"name": "Posun ekvitermickej krivky"},
+      "dhw_temperature": {"name": "Teplota TÚV"},
+      "error_code": {"name": "Chybový kód"},
+      "agent_state": {
+        "name": "Stav agenta",
+        "state": {"ok": "V poriadku", "pozor": "Pozor", "problem": "Problém"}
+      },
+      "agent_summary": {"name": "Posledné hodnotenie agenta"},
+      "alert_count": {"name": "Poplachy"}
+    },
+    "binary_sensor": {
+      "compressor_running": {"name": "Kompresor beží"},
+      "defrost": {"name": "Odmrazovanie"},
+      "dhw_heating": {"name": "Ohrev TÚV"},
+      "problem": {"name": "Problém"},
+      "esp_online": {"name": "Pripojenie ESP"},
+      "collector_online": {"name": "Pripojenie zberača"},
+      "ha_online": {"name": "Pripojenie Home Assistant"}
+    },
+    "select": {
+      "agent_mode": {
+        "name": "Režim agenta",
+        "state": {"off": "Vypnutý", "advise": "Radí", "control": "Riadi"}
+      }
+    },
+    "number": {
+      "room_target": {"name": "Cieľová izbová teplota"}
+    },
+    "button": {
+      "run_now": {"name": "Spustiť agenta teraz"},
+      "dhw_boost": {"name": "Spustiť ohrev TÚV"}
+    }
+  },
+  "exceptions": {
+    "action_failed": {"message": "Kúrenie AI odmietla akciu: {error}"},
+    "action_auth": {"message": "Kľúč integrácie bol odmietnutý. Prihlás integráciu znova."}
+  }
+}

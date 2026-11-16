@@ -1,0 +1,93 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect Kúrenie AI",
+        "description": "Enter the address of the Kúrenie AI web app and the integration key created in the app (Settings, Home Assistant integration).",
+        "data": {
+          "url": "App address",
+          "api_key": "Integration key"
+        },
+        "data_description": {
+          "url": "For example http://192.168.1.50",
+          "api_key": "The key is shown only once when it is created in the app."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Integration key rejected",
+        "description": "The key for {url} is no longer valid. Create a new key in the app and enter it here.",
+        "data": {
+          "api_key": "Integration key"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the app. Check the address and that the app is running.",
+      "invalid_auth": "The integration key is invalid or has been revoked.",
+      "invalid_url": "Invalid address."
+    },
+    "abort": {
+      "already_configured": "This app is already configured.",
+      "reauth_successful": "Re-authentication was successful."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Kúrenie AI options",
+        "data": {
+          "scan_interval": "Refresh interval (seconds)"
+        },
+        "data_description": {
+          "scan_interval": "From 15 to 300 seconds."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "outdoor_temperature": {"name": "Outdoor temperature"},
+      "room_temperature": {"name": "{room} temperature"},
+      "water_out": {"name": "Water outlet temperature"},
+      "water_return": {"name": "Water return temperature"},
+      "water_target": {"name": "Heating curve target water temperature"},
+      "water_delta_t": {"name": "Water delta T"},
+      "compressor_frequency": {"name": "Compressor frequency"},
+      "curve_offset": {"name": "Heating curve offset"},
+      "dhw_temperature": {"name": "Hot water temperature"},
+      "error_code": {"name": "Error code"},
+      "agent_state": {
+        "name": "Agent status",
+        "state": {"ok": "OK", "pozor": "Attention", "problem": "Problem"}
+      },
+      "agent_summary": {"name": "Agent last assessment"},
+      "alert_count": {"name": "Alerts"}
+    },
+    "binary_sensor": {
+      "compressor_running": {"name": "Compressor running"},
+      "defrost": {"name": "Defrost"},
+      "dhw_heating": {"name": "Hot water heating"},
+      "problem": {"name": "Problem"},
+      "esp_online": {"name": "ESP connection"},
+      "collector_online": {"name": "Collector connection"},
+      "ha_online": {"name": "Home Assistant connection"}
+    },
+    "select": {
+      "agent_mode": {
+        "name": "Agent mode",
+        "state": {"off": "Off", "advise": "Advise", "control": "Control"}
+      }
+    },
+    "number": {
+      "room_target": {"name": "Target room temperature"}
+    },
+    "button": {
+      "run_now": {"name": "Run agent now"},
+      "dhw_boost": {"name": "Boost hot water"}
+    }
+  },
+  "exceptions": {
+    "action_failed": {"message": "Kúrenie AI rejected the action: {error}"},
+    "action_auth": {"message": "The integration key was rejected. Re-authenticate the integration."}
+  }
+}
