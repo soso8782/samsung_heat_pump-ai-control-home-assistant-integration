@@ -1,4 +1,4 @@
-"""Senzory Kúrenie AI."""
+"""Senzory Samsung Heat Pump AI Control."""
 from __future__ import annotations
 
 from collections.abc import Callable

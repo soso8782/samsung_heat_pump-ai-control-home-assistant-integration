@@ -2,8 +2,8 @@
   "config": {
     "step": {
       "user": {
-        "title": "Pripojenie Kúrenie AI",
-        "description": "Zadaj adresu webu aplikácie Kúrenie AI a kľúč integrácie vytvorený v aplikácii (Nastavenia, Integrácia Home Assistant). Páči sa ti projekt? Podpor ho cez [PayPal](https://www.paypal.com/paypalme/sonics007) alebo [Ko-fi](https://ko-fi.com/soso8782).",
+        "title": "Pripojenie Samsung Heat Pump AI Control",
+        "description": "Zadaj adresu webu aplikácie Samsung Heat Pump AI Control a kľúč integrácie vytvorený v aplikácii (Nastavenia, Integrácia Home Assistant). Páči sa ti projekt? Podpor ho cez [PayPal](https://www.paypal.com/paypalme/sonics007) alebo [Ko-fi](https://ko-fi.com/soso8782).",
         "data": {
           "url": "Adresa aplikácie",
           "api_key": "Kľúč integrácie"
@@ -34,7 +34,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "Voľby Kúrenie AI",
+        "title": "Voľby Samsung Heat Pump AI Control",
         "data": {
           "scan_interval": "Interval obnovy (sekundy)"
         },
@@ -87,7 +87,7 @@
     }
   },
   "exceptions": {
-    "action_failed": {"message": "Kúrenie AI odmietla akciu: {error}"},
+    "action_failed": {"message": "Samsung Heat Pump AI Control odmietla akciu: {error}"},
     "action_auth": {"message": "Kľúč integrácie bol odmietnutý. Prihlás integráciu znova."}
   }
 }

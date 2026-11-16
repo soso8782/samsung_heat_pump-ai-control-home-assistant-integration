@@ -1,9 +1,9 @@
-"""Konštanty integrácie Kúrenie AI."""
+"""Konštanty integrácie Samsung Heat Pump AI Control."""
 from homeassistant.const import Platform
 
 from .model import DEFAULT_INTERVAL, MAX_INTERVAL, MIN_INTERVAL  # noqa: F401
 
-DOMAIN = "kurenie_ai"
+DOMAIN = "samsung_heat_pump_ai_control"
 MANUFACTURER = "Samsung"
 CONF_URL = "url"
 CONF_API_KEY = "api_key"

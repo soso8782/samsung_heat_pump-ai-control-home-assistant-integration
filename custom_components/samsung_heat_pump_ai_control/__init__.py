@@ -1,4 +1,4 @@
-"""Integrácia Kúrenie AI pre Home Assistant."""
+"""Integrácia Samsung Heat Pump AI Control pre Home Assistant."""
 from __future__ import annotations
 
 from homeassistant.core import HomeAssistant

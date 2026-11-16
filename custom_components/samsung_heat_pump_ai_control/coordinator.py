@@ -1,4 +1,4 @@
-"""DataUpdateCoordinator integrácie Kúrenie AI."""
+"""DataUpdateCoordinator integrácie Samsung Heat Pump AI Control."""
 from __future__ import annotations
 
 from datetime import timedelta
@@ -40,7 +40,7 @@ class KurenieCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         except KurenieAuthError as err:
             raise ConfigEntryAuthFailed("Integration key was rejected") from err
         except (KurenieConnectionError, KurenieApiError) as err:
-            raise UpdateFailed(f"Error communicating with Kúrenie AI: {err}") from err
+            raise UpdateFailed(f"Error communicating with Samsung Heat Pump AI Control: {err}") from err
 
     async def async_action(self, request: tuple[str, dict]) -> None:
         """Vykoná akciu (cesta, telo), potom okamžite obnoví dáta. Chyby -> HomeAssistantError."""

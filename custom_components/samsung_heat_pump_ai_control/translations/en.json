@@ -2,8 +2,8 @@
   "config": {
     "step": {
       "user": {
-        "title": "Connect Kúrenie AI",
-        "description": "Enter the address of the Kúrenie AI web app and the integration key created in the app (Settings, Home Assistant integration). Like the project? Support it on [PayPal](https://www.paypal.com/paypalme/sonics007) or [Ko-fi](https://ko-fi.com/soso8782).",
+        "title": "Connect Samsung Heat Pump AI Control",
+        "description": "Enter the address of the Samsung Heat Pump AI Control web app and the integration key created in the app (Settings, Home Assistant integration). Like the project? Support it on [PayPal](https://www.paypal.com/paypalme/sonics007) or [Ko-fi](https://ko-fi.com/soso8782).",
         "data": {
           "url": "App address",
           "api_key": "Integration key"
@@ -34,7 +34,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "Kúrenie AI options",
+        "title": "Samsung Heat Pump AI Control options",
         "data": {
           "scan_interval": "Refresh interval (seconds)"
         },
@@ -87,7 +87,7 @@
     }
   },
   "exceptions": {
-    "action_failed": {"message": "Kúrenie AI rejected the action: {error}"},
+    "action_failed": {"message": "Samsung Heat Pump AI Control rejected the action: {error}"},
     "action_auth": {"message": "The integration key was rejected. Re-authenticate the integration."}
   }
 }

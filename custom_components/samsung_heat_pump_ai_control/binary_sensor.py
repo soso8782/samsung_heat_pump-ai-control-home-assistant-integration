@@ -1,4 +1,4 @@
-"""Binárne senzory Kúrenie AI."""
+"""Binárne senzory Samsung Heat Pump AI Control."""
 from __future__ import annotations
 
 from dataclasses import dataclass

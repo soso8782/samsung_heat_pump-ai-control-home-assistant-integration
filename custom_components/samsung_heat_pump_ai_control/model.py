@@ -1,4 +1,4 @@
-"""Čistá logika integrácie Kúrenie AI (bez závislosti na Home Assistantovi, preto testovateľná samostatne).
+"""Čistá logika integrácie Samsung Heat Pump AI Control (bez závislosti na Home Assistantovi, preto testovateľná samostatne).
 
 Parsuje odpoveď GET /api/ha/v1/state na hodnoty entít a zostavuje požiadavky akcií.
 """
@@ -172,8 +172,14 @@ def alert_attributes(d: dict) -> dict:
 def device_info(d: dict) -> dict:
     """Údaje pre DeviceInfo: name, model, sw_version."""
     name = _dig(d, "zariadenie", "nazov")
-    return {"name": "Kúrenie AI – %s" % name if name else "Kúrenie AI", "model": _text(_dig(d, "zariadenie", "model")),
+    return {"name": "Samsung Heat Pump AI Control", "model": _text(_dig(d, "zariadenie", "model")),
             "sw_version": _text(d.get("verzia"))}
+
+
+def entry_title(d: dict) -> str:
+    """Názov položky integrácie: názov projektu + názov zariadenia z profilu."""
+    name = _dig(d, "zariadenie", "nazov")
+    return "Samsung Heat Pump AI Control – %s" % name if name else "Samsung Heat Pump AI Control"
 
 
 # ---- akcie: (cesta, telo)

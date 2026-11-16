@@ -1,4 +1,4 @@
-"""Základná entita integrácie Kúrenie AI."""
+"""Základná entita integrácie Samsung Heat Pump AI Control."""
 from __future__ import annotations
 
 from homeassistant.helpers.device_registry import DeviceInfo
@@ -10,7 +10,7 @@ from .coordinator import KurenieCoordinator
 
 
 class KurenieEntity(CoordinatorEntity[KurenieCoordinator]):
-    """Entita patriaca jedinému zariadeniu „Kúrenie AI“."""
+    """Entita patriaca jedinému zariadeniu „Samsung Heat Pump AI Control“."""
 
     _attr_has_entity_name = True
 

@@ -1,6 +1,6 @@
 {
-  "domain": "kurenie_ai",
-  "name": "Kúrenie AI",
+  "domain": "samsung_heat_pump_ai_control",
+  "name": "Samsung Heat Pump AI Control",
   "codeowners": ["@soso8782"],
   "config_flow": true,
   "documentation": "https://github.com/soso8782/samsung_heat_pump-ai-control-home-assistant-integration",
@@ -8,5 +8,5 @@
   "iot_class": "local_polling",
   "issue_tracker": "https://github.com/soso8782/samsung_heat_pump-ai-control-home-assistant-integration/issues",
   "requirements": [],
-  "version": "1.0.0"
+  "version": "2.0.0"
 }

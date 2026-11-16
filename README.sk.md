@@ -1,4 +1,4 @@
-# Kúrenie AI – integrácia do Home Assistanta
+# Samsung Heat Pump AI Control – integrácia do Home Assistanta
 
 [![English](https://img.shields.io/badge/lang-English-blue.svg)](README.md) [![Slovenčina](https://img.shields.io/badge/jazyk-Sloven%C4%8Dina-green.svg)](README.sk.md)
 
@@ -30,22 +30,27 @@ v Nastaveniach → „Jazyk upozornení a agenta“.
 **Cez HACS (vlastný repozitár):**
 1. HACS → menu ⋮ vpravo hore → **Vlastné repozitáre**.
 2. Repozitár: `https://github.com/soso8782/samsung_heat_pump-ai-control-home-assistant-integration`, kategória **Integrácia**.
-3. Nainštaluj **Kúrenie AI** a reštartuj Home Assistant.
+3. Nainštaluj **Samsung Heat Pump AI Control** a reštartuj Home Assistant.
 
-**Ručne:** skopíruj priečinok `custom_components/kurenie_ai` do `config/custom_components/` a reštartuj Home Assistant.
+**Ručne:** skopíruj priečinok `custom_components/samsung_heat_pump_ai_control` do `config/custom_components/` a reštartuj Home Assistant.
+
+**Prechod z verzie 1.x (predtým „Kúrenie AI“, doména `kurenie_ai`):** verzia 2.0.0 používa novú doménu
+`samsung_heat_pump_ai_control`. V Home Assistante zmaž starú položku integrácie, odstráň starý priečinok
+`custom_components/kurenie_ai` (v HACS: Odstrániť), nainštaluj 2.0.0, reštartuj a integráciu pridaj znova.
+ID entít sa zmenia; uprav automatizácie a dashboardy, ktoré ich používajú.
 
 ## Nastavenie
 
 1. V aplikácii Kúrenie AI otvor **Nastavenia → Integrácia do Home Assistanta** a daj **Vytvoriť kľúč**.
    Kľúč sa zobrazí iba raz (na serveri je uložený len jeho odtlačok SHA-256). Nový kľúč nahradí starý, **Zrušiť kľúč** integráciu odpojí.
-2. V Home Assistante: **Nastavenia → Zariadenia a služby → Pridať integráciu → Kúrenie AI**.
+2. V Home Assistante: **Nastavenia → Zariadenia a služby → Pridať integráciu → Samsung Heat Pump AI Control**.
 3. Zadaj adresu aplikácie (napr. `http://192.168.1.50`) a kľúč.
 4. Interval obnovy (15 – 300 s) zmeníš cez **Konfigurovať** pri integrácii.
    Keď kľúč zrušíš alebo vymeníš, Home Assistant ponúkne opätovné prihlásenie.
 
 ## Entity
 
-Zariadenie „Kúrenie AI – <model tepelného čerpadla>“ (výrobca Samsung).
+Zariadenie „Samsung Heat Pump AI Control“ (výrobca Samsung).
 
 | Typ | Entity |
 |---|---|
@@ -67,7 +72,7 @@ Spotrebu a COP pre panel Energia integrácia neprináša – tie posiela apliká
   ```yaml
   logger:
     logs:
-      custom_components.kurenie_ai: debug
+      custom_components.samsung_heat_pump_ai_control: debug
   ```
 
 ## Testy

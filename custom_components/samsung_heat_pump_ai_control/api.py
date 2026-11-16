@@ -1,4 +1,4 @@
-"""Klient API Kúrenie AI (v1)."""
+"""Klient API Samsung Heat Pump AI Control (v1)."""
 from __future__ import annotations
 
 from typing import Any

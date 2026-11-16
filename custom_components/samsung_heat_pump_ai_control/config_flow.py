@@ -1,4 +1,4 @@
-"""Config flow integrácie Kúrenie AI."""
+"""Config flow integrácie Samsung Heat Pump AI Control."""
 from __future__ import annotations
 
 from collections.abc import Mapping
@@ -21,7 +21,7 @@ from homeassistant.helpers.selector import (
 from .api import KurenieAuthError, KurenieClient, KurenieError
 from .const import CONF_API_KEY, CONF_SCAN_INTERVAL, CONF_URL, DOMAIN
 from .coordinator import KurenieConfigEntry
-from .model import DEFAULT_INTERVAL, MAX_INTERVAL, MIN_INTERVAL, clamp_interval, device_info, normalize_url
+from .model import DEFAULT_INTERVAL, MAX_INTERVAL, MIN_INTERVAL, clamp_interval, entry_title, normalize_url
 
 KEY_SELECTOR = TextSelector(TextSelectorConfig(type=TextSelectorType.PASSWORD, autocomplete="off"))
 
@@ -54,7 +54,7 @@ class KurenieConfigFlow(ConfigFlow, domain=DOMAIN):
                 self._abort_if_unique_id_configured()
                 errors, state = await self._validate(url, key)
                 if not errors and state is not None:
-                    title = device_info(state)["name"]
+                    title = entry_title(state)
                     return self.async_create_entry(title=title, data={CONF_URL: url, CONF_API_KEY: key})
         schema = vol.Schema(
             {

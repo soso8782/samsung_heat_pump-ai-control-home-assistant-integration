@@ -1,4 +1,4 @@
-# Kúrenie AI – Home Assistant integration
+# Samsung Heat Pump AI Control – Home Assistant integration
 
 [![English](https://img.shields.io/badge/lang-English-blue.svg)](README.md) [![Slovenčina](https://img.shields.io/badge/jazyk-Sloven%C4%8Dina-green.svg)](README.sk.md)
 
@@ -30,22 +30,27 @@ in Slovak and English: the web UI is switched with the SK/EN switch, and the lan
 **Via HACS (custom repository):**
 1. HACS → menu ⋮ at the top right → **Custom repositories**.
 2. Repository: `https://github.com/soso8782/samsung_heat_pump-ai-control-home-assistant-integration`, category **Integration**.
-3. Install **Kúrenie AI** and restart Home Assistant.
+3. Install **Samsung Heat Pump AI Control** and restart Home Assistant.
 
-**Manually:** copy the `custom_components/kurenie_ai` folder to `config/custom_components/` and restart Home Assistant.
+**Manually:** copy the `custom_components/samsung_heat_pump_ai_control` folder to `config/custom_components/` and restart Home Assistant.
+
+**Upgrading from 1.x (formerly "Kúrenie AI", domain `kurenie_ai`):** version 2.0.0 uses the new domain
+`samsung_heat_pump_ai_control`. Delete the old integration entry in Home Assistant, remove the old
+`custom_components/kurenie_ai` folder (HACS: Remove), install 2.0.0, restart and add the integration again.
+Entity IDs change; update automations and dashboards that use them.
 
 ## Setup
 
 1. In the Kúrenie AI app open **Settings → Home Assistant integration** and click **Create key**.
    The key is shown only once (only its SHA-256 fingerprint is stored on the server). A new key replaces the old one, **Revoke key** disconnects the integration.
-2. In Home Assistant: **Settings → Devices & services → Add integration → Kúrenie AI**.
+2. In Home Assistant: **Settings → Devices & services → Add integration → Samsung Heat Pump AI Control**.
 3. Enter the app address (e.g. `http://192.168.1.50`) and the key.
 4. You can change the refresh interval (15 – 300 s) with **Configure** on the integration.
    When you revoke or replace the key, Home Assistant offers to re-authenticate.
 
 ## Entities
 
-Device "Kúrenie AI – <heat pump model>" (manufacturer Samsung).
+Device "Samsung Heat Pump AI Control" (manufacturer Samsung).
 
 | Type | Entities |
 |---|---|
@@ -67,7 +72,7 @@ The integration does not provide consumption and COP for the Energy dashboard �
   ```yaml
   logger:
     logs:
-      custom_components.kurenie_ai: debug
+      custom_components.samsung_heat_pump_ai_control: debug
   ```
 
 ## Tests
